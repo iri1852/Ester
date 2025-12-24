@@ -20,7 +20,7 @@
             --shadow-active: 0 30px 60px -12px rgba(0,0,0,0.25);
             --font-header: 'Playfair Display', serif;
             --font-body: 'Poppins', sans-serif;
-            --transition-speed: 0.5s; /* Slightly slower for smoother loop feel */
+            --transition-speed: 0.5s;
             --border-radius: 24px;
         }
 
@@ -90,10 +90,9 @@
             background: var(--card-bg);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-light);
-            /* Important: Transition needs to handle opacity and transform smoothly */
             transition: transform var(--transition-speed) cubic-bezier(0.2, 0.8, 0.2, 1), 
                         opacity var(--transition-speed) ease,
-                        z-index 0s linear; /* Z-index changes instantly to prevent layering bugs */
+                        z-index 0s linear;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -124,9 +123,9 @@
         }
 
         .card p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-light);
-            line-height: 1.5;
+            line-height: 1.4;
             font-weight: 300;
         }
 
@@ -145,10 +144,7 @@
         }
         .card.active:hover .tap-hint::after { transform: translateX(5px); }
 
-
         /* --- Card Positioning States --- */
-        
-        /* ACTIVE: Center */
         .card.active {
             z-index: 10;
             transform: scale(1) translateX(0) translateZ(0);
@@ -156,7 +152,6 @@
             box-shadow: var(--shadow-active);
         }
         
-        /* PREV: Left & Back */
         .card.prev {
             z-index: 5;
             transform: scale(0.9) translateX(-140px) translateZ(-100px) rotateY(10deg);
@@ -165,7 +160,6 @@
             filter: blur(1px);
         }
 
-        /* NEXT: Right & Back */
         .card.next {
             z-index: 5;
             transform: scale(0.9) translateX(140px) translateZ(-100px) rotateY(-10deg);
@@ -174,7 +168,6 @@
             filter: blur(1px);
         }
         
-        /* HIDDEN: Far Back (Waiting to enter) */
         .card.hidden {
             z-index: 0;
             opacity: 0;
@@ -239,8 +232,7 @@
 </header>
 
 <div class="slider-container">
-    <div class="cards-wrapper" id="cardsWrapper">
-        </div>
+    <div class="cards-wrapper" id="cardsWrapper"></div>
     
     <div class="nav-btns">
         <button class="nav-btn" id="prevBtn">
@@ -272,10 +264,17 @@
         },
         {
             title: "Dinner in the dark",
-            shortDesc: "fine dining experience.",
+            shortDesc: "Fine dining experience.",
             longDesc: "Dans le Noir ? Brussels is een restaurant waar je volledig in het donker dineert. Je zintuigen voor smaak en geur worden daardoor sterker, en de bediening gebeurt door blinde of slechtziende medewerkers. Het is een verrassingsmenu en een unieke, zintuiglijke ervaring.",
             img: "https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2020/02/18154912/dans-le-noir-hires-1-1024x667.jpg",
             link: "https://brussels.danslenoir.com/fr_FR/"
+        },
+        {
+            title: "Kerstmarkt Keulen",
+            shortDesc: "Magische kerstsfeer bij de Dom.",
+            longDesc: "Bezoek een van de meest iconische kerstmarkten van Europa. Geniet van de duizenden lichtjes, ambachtelijke kraampjes, glühwein en de indrukwekkende Dom van Keulen als decor.",
+            img: "https://images.unsplash.com/photo-1545048702-793e2306c87d?auto=format&fit=crop&q=80&w=1000",
+            link: "https://www.koelnerweihnachtsmarkt.com/"
         },
         {
             title: "Cool museum",
@@ -284,34 +283,44 @@
             img: "https://verbekefoundation.com/wp-content/uploads/2020/05/Botha_you-can-have-my-heart-and-my-sole_%C2%A9Tineke-Schuurmans_1A2A0708.jpeg",
             link: "https://verbekefoundation.com/"
         },
-         {
-            title: "Cultuur Dag Brusel",
-            shortDesc: "Onderdompeling in kunst en cultuur in Brussel",
+        {
+            title: "Indoor Skydiving",
+            shortDesc: "De sensatie van een vrije val.",
+            longDesc: "Ervaar het gevoel van vliegen zonder uit een vliegtuig te hoeven springen! In een krachtige windtunnel zweef je op de lucht. Een adrenalinekick die je niet snel vergeet.",
+            img: "https://images.unsplash.com/photo-1520444455089-8800171277a7?auto=format&fit=crop&q=80&w=1000",
+            link: "https://www.airspace.be/nl/"
+        },
+        {
+            title: "Cultuur Dag Brussel",
+            shortDesc: "Onderdompeling in kunst.",
             longDesc: "Een dag vol ontdekkingen in de bruisende stad Brussel, waar kunst en cultuur samenkomen in een onvergetelijke ervaring.",
             img: "https://cdn.britannica.com/52/159952-050-00D2DCB3/roadway-Pompeii-Italy.jpg",
             link: "https://pompeii-experience.com/bruxelles/nl/"
         },
         {
+            title: "Street Art Tour",
+            shortDesc: "Kleurrijke stadswandeling.",
+            longDesc: "Ontdek de stad op een andere manier via een gids of app. Wandel langs verborgen murals, indrukwekkende graffiti en artistieke meesterwerken op de muren van Brussel of Antwerpen.",
+            img: "https://images.unsplash.com/photo-1517524008436-bbdb5395183d?auto=format&fit=crop&q=80&w=1000",
+            link: "https://www.visit.brussels/nl/bezoekers/to-do/street-art-brussel"
+        },
+        {
             title: "Drannie",
-            shortDesc: "Samen naar dranouter 2026 gaan",
-            longDesc: "spreek voor zig :)",
+            shortDesc: "Samen naar Dranouter 2026.",
+            longDesc: "Spreekt voor zich :) Een weekend vol muziek, sfeer en gezelligheid in het prachtige heuvelland.",
             img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Joan_Baez_Bob_Dylan.jpg",
             link: "https://festivaldranouter.be/nl"
         }
-
     ];
 
     const wrapper = document.getElementById('cardsWrapper');
     const modal = document.getElementById('modal');
-    // Modal Elements
     const mTitle = document.getElementById('modalTitle');
     const mDesc = document.getElementById('modalDesc');
     const mLink = document.getElementById('modalLink');
     const closeBtn = document.getElementById('closeModal');
 
     let activeIndex = 0;
-
-    // --- Core Logic ---
 
     function renderCards() {
         wrapper.innerHTML = '';
@@ -331,17 +340,13 @@
                 </div>
             `;
             
-            // Interaction: Click Center to Open, Side to Move
             card.addEventListener('click', () => {
                 if(index === activeIndex) {
                     openModal(choice);
                 } else {
-                    // Smart navigation: determine shortest path
-                    // This simple check handles clicking the visible "prev" or "next" card
                     const len = choices.length;
                     const prevIndex = (activeIndex - 1 + len) % len;
                     const nextIndex = (activeIndex + 1) % len;
-
                     if (index === nextIndex) moveNext();
                     if (index === prevIndex) movePrev();
                 }
@@ -355,15 +360,11 @@
     function updateClasses() {
         const cards = document.querySelectorAll('.card');
         const len = choices.length;
-
-        // Calculate Loop Indices
         const prevIndex = (activeIndex - 1 + len) % len;
         const nextIndex = (activeIndex + 1) % len;
 
         cards.forEach((card, index) => {
-            // Reset base class
             card.className = 'card';
-            
             if (index === activeIndex) {
                 card.classList.add('active');
             } else if (index === prevIndex) {
@@ -385,13 +386,10 @@
         activeIndex = (activeIndex - 1 + choices.length) % choices.length;
         updateClasses();
     }
-
-    // --- Controls & Swipe ---
     
     document.getElementById('nextBtn').addEventListener('click', moveNext);
     document.getElementById('prevBtn').addEventListener('click', movePrev);
 
-    // Swipe Logic
     let startX = 0;
     let isDragging = false;
 
@@ -406,13 +404,10 @@
     const endDrag = (e) => {
         if (!isDragging) return;
         wrapper.style.cursor = 'grab';
-        
         const clientX = e.type.includes('mouse') ? e.clientX : e.changedTouches[0].clientX;
         const diff = startX - clientX;
-        
-        if (diff > 50) moveNext(); // Swiped Left -> Next
-        else if (diff < -50) movePrev(); // Swiped Right -> Prev
-        
+        if (diff > 50) moveNext();
+        else if (diff < -50) movePrev();
         isDragging = false;
     };
 
@@ -420,8 +415,6 @@
     wrapper.addEventListener('touchend', endDrag);
     wrapper.addEventListener('mouseleave', () => { isDragging = false; wrapper.style.cursor = 'grab'; });
 
-
-    // --- Modal Logic ---
     function openModal(item) {
         mTitle.innerText = item.title;
         mDesc.innerText = item.longDesc;
@@ -431,9 +424,7 @@
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-    // Initialize
     renderCards();
-
 </script>
 </body>
 </html>
